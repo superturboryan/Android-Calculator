@@ -173,11 +173,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@android:string/copy"
-        app:layout_constraintStart_toStartOf="@+id/new"
-        app:layout_constraintTop_toBottomOf="@+id/new" />
+        app:layout_constraintStart_toStartOf="@+id/newNumber"
+        app:layout_constraintTop_toBottomOf="@+id/newNumber" />
 
     <EditText
-        android:id="@+id/new"
+        android:id="@+id/newNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

@@ -1,20 +1,18 @@
 package com.ryandf.calculator
 
 import android.os.Bundle
-import android.text.InputType
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var result: TextView
-
-    private lateinit var newNumber: EditText
-
-    private val displayOperation by lazy(LazyThreadSafetyMode.NONE) {findViewById<EditText>(R.id.operation)}
+//    private lateinit var result: TextView
+//
+//    private lateinit var newNumber: EditText
+//
+//    private val displayOperation by lazy(LazyThreadSafetyMode.NONE) {findViewById<EditText>(R.id.operation)}
 
     //Variables to hold the operands and type of calculation
     private var operand1: Double? = null
@@ -25,34 +23,38 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        result = findViewById(R.id.result)
-        newNumber = findViewById(R.id.newNumber)
-        newNumber.setInputType(InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_SIGNED or InputType.TYPE_NUMBER_FLAG_DECIMAL)
+//        result = findViewById(R.id.result)
+//        newNumber = findViewById(R.id.newNumber)
+//        newNumber.setInputType(InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_SIGNED or InputType.TYPE_NUMBER_FLAG_DECIMAL)
+//
+//        //Input buttons
 
-        //Input buttons
-
-        val button0: Button = findViewById(R.id.button0)
-        val button1: Button = findViewById(R.id.button1)
-        val button2: Button = findViewById(R.id.button2)
-        val button3: Button = findViewById(R.id.button3)
-        val button4: Button = findViewById(R.id.button4)
-        val button5: Button = findViewById(R.id.button5)
-        val button6: Button = findViewById(R.id.button6)
-        val button7: Button = findViewById(R.id.button7)
-        val button8: Button = findViewById(R.id.button8)
-        val button9: Button = findViewById(R.id.button9)
-
-        val buttonDot: Button = findViewById(R.id.buttonDot)
-        val buttonPlus: Button = findViewById(R.id.buttonPlus)
-        val buttonMinus: Button = findViewById(R.id.buttonSubtraction)
-        val buttonMultiply: Button = findViewById(R.id.buttonMultiply)
-        val buttonDivide: Button = findViewById(R.id.buttonDivide)
-        val buttonEquals: Button = findViewById(R.id.buttonEquals)
+//        Use kotlinx import to access all activity widgets
+//
+//        val button0: Button = findViewById(R.id.button0)
+//        val button1: Button = findViewById(R.id.button1)
+//        val button2: Button = findViewById(R.id.button2)
+//        val button3: Button = findViewById(R.id.button3)
+//        val button4: Button = findViewById(R.id.button4)
+//        val button5: Button = findViewById(R.id.button5)
+//        val button6: Button = findViewById(R.id.button6)
+//        val button7: Button = findViewById(R.id.button7)
+//        val button8: Button = findViewById(R.id.button8)
+//        val button9: Button = findViewById(R.id.button9)
+//
+//        val buttonDot: Button = findViewById(R.id.buttonDot)
+//        val buttonPlus: Button = findViewById(R.id.buttonPlus)
+//        val buttonMinus: Button = findViewById(R.id.buttonSubtraction)
+//        val buttonMultiply: Button = findViewById(R.id.buttonMultiply)
+//        val buttonDivide: Button = findViewById(R.id.buttonDivide)
+//        val buttonEquals: Button = findViewById(R.id.buttonEquals)
 
         val listener = View.OnClickListener { viewObject ->
             val b = viewObject as Button
             newNumber.append(b.text)
         }
+
+
 
         button0.setOnClickListener(listener)
         button1.setOnClickListener(listener)
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         button9.setOnClickListener(listener)
 
         buttonPlus.setOnClickListener(listener)
-        buttonMinus.setOnClickListener(listener)
+        buttonSubtraction.setOnClickListener(listener)
         buttonMultiply.setOnClickListener(listener)
         buttonDivide.setOnClickListener(listener)
         buttonDot.setOnClickListener(listener)
@@ -84,12 +86,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             pendingOperation = op
-            displayOperation.setText(pendingOperation)
+            operation.setText(pendingOperation)
         }
 
         buttonEquals.setOnClickListener(opListener)
         buttonPlus.setOnClickListener(opListener)
-        buttonMinus.setOnClickListener(opListener)
+        buttonSubtraction.setOnClickListener(opListener)
         buttonMultiply.setOnClickListener(opListener)
         buttonDivide.setOnClickListener(opListener)
     }
